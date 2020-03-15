@@ -1,0 +1,230 @@
+/* ------------------------------------------
+  You main styles
+---------------------------------------------*/
+@import 'https://fonts.googleapis.com/css?family=Alegreya+Sans:300,300i,400,400i,500,500i,700,700i,800,800i';
+
+
+
+/* ------------------------------------------
+  Skitter custom settings
+---------------------------------------------*/
+.skitter {
+    position: relative;
+    width: 100% ;
+    height: 100vh ;
+    background: #01182a;
+}
+
+
+.container_skitter{
+    width: 100%!important;
+    height: 100%!important;
+}
+.image_main{
+    width: 100%!important;
+    height: 95vh!important;
+   
+}
+
+@media screen and (max-width:500px) {   
+    .image_main{ 
+  width: 100%!important;
+    height: 60vh!important;
+}
+}
+.overlay {
+  background: rgba(6, 12, 34, 0.8);
+background: rgb(1,24,42);
+background: radial-gradient(circle, rgba(1,24,42,0.55) 0%, rgba(1,24,42,0.8) 54%, rgba(1,24,42,1) 99%);
+ position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+    z-index: 4
+}
+
+.skitter-large-box {
+  width: 100%;
+    position: relative;
+}
+.skitter-small-box {
+  max-width: 400px;
+}
+.skitter-medium-box {
+  max-width: 500px;
+}
+
+.skitter .next_button, .skitter .prev_button{ z-index: 8}
+.skitter-large-box .down-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    position: absolute;
+    display: block;
+    text-align: center;
+    line-height: 34px;
+    z-index: 8;
+    color: white;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -15px;
+    border: 3px solid #ff9606;
+    box-shadow: 0 0 0 rgb(255, 150, 6);
+    animation: pulse 2s infinite;
+}
+
+.skitter-large-box .down-arrow .fa {
+    animation-name: bounceAlpha;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.skitter .next_button,
+.skitter .prev_button {
+    background: url("../images/arrow-btn.png") no-repeat;
+    text-indent: 9999em;
+    width: 30px;
+    height: 40px;
+}
+
+.skitter .next_button {
+    background-position: -30px 0;
+    right: 10px
+}
+
+.skitter .prev_button {
+    background-position: 0 0;
+    left: 10px
+}
+
+.skitter .info_slide_dots {
+    bottom: 60px; z-index: 8
+}
+
+
+.skitter .info_slide_dots .image_number {
+    background: transparent;
+    border: 2px solid #fff;
+    text-indent: 99999em;
+    width: 12px;
+    height: 12px;
+}
+
+.skitter .info_slide_dots .image_number.image_number_select {
+    background: transparent;
+    border-color: #ff9606;
+}
+
+.progressbar {
+  	
+	animation: rota2 1000ms linear;
+  -moz-animation: rota2 1000ms linear;
+  -o-animation: rota2 1000ms linear;
+  -webkit-animation: rota2 1000ms linear;
+      background-color: rgba(255, 255, 255, .5);
+    bottom: 35px;
+    top: auto;
+    right: 70px;
+    width: 100px;
+    height: 5px;
+}
+
+.skitter .play_pause_button {
+    position: absolute;
+    top: 94%;
+    left: 96%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 8; display: none}
+/* Milestones */
+
+.miles-wrapper {
+    padding-top: 0px;
+}
+
+.milestone {
+    width: 172px;
+    height: 140px;
+    margin: 0 auto;
+    /* background: rgba(3, 28, 102, 0.7); */
+    /* background: rgba(255, 255, 255, 0.7);*/
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.milestone_icon {
+    display: inline-block;
+    width: 70px;
+}
+
+.milestone_icon img {
+    width: 100%;
+    color: #ff9606;
+        font-weight: 700;
+
+    
+}
+
+.milestone_counter {
+    font-size: 35px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1;
+    margin-top: 10px;
+}
+
+.milestone_text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #b96300;
+    margin-top: 3px;
+}
+
+@media (max-width:500px) {
+    
+    
+.miles-wrapper {
+    padding-top: 0px;
+    margin-right: -40px;
+}
+   .milestone {
+    width: 130px;
+    height: 110px;
+    margin: 0 auto;
+    /* background: rgba(3, 28, 102, 0.7); */
+    border-radius: 50%;
+    padding: 10px;
+       margin-bottom: 4px
+}
+
+.milestone_icon {
+    display: inline-block;
+    width: 32px;
+}
+
+.milestone_icon img {
+    width: 100%;
+    color: #ff9606;
+}
+
+.milestone_counter {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1;
+    margin-top: 5px;
+}
+
+.milestone_text {
+    font-size: 13px;
+    font-weight: 400;
+    color: #b96300;
+    margin-top: -5px;
+} 
+ .skitter .info_slide_dots .image_number {
+    display: none;
+}  
+    
+}

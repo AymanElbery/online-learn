@@ -1,0 +1,90 @@
+div#content{
+    padding: 50px;;
+}
+
+div#content .select-univ{
+    font-size: 1.1em;
+}
+.card{
+    background-color: #0f1242;
+    border-radius: 5px;
+    padding: 5px;
+    padding-top: 20px;
+    color: #f28d1e;
+    display: inline-block;
+    margin-left: 5%;
+}
+.card .card-title{
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.card .card-subtitle{
+    color: #FFF;
+    font-size: 1.3em;
+    
+}
+.table th, .table td{
+    text-align: center;
+}
+.thead-dark{
+    background-color: #f28d1e;
+    color:#0f1242; 
+}
+.table td{
+    font-weight: bold;
+    color:#0f1242;
+}
+.table tbody tr:hover{
+    background-color: rgba(15, 18, 66, 0.1);
+}
+.input-group{
+    text-align: left;
+}
+.input-group button{
+    position: relative;
+    bottom: 25px;
+    right: 40px;
+}
+.contDate{
+    display: inline-block;
+    margin-left: 21%;
+}
+.fromDate{
+    width: 100%;
+}
+div, span , p , h1, h2 ,h3, h4, h5, h6{
+    font-family: "Almarai", Roboto, sans-serif !important;
+}
+mat-datepicker-toggle{
+    color: #0f1242
+}
+.startDate, .endDate{
+    text-align: center;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #0f1242 !important;
+    font-family: "Almarai", Roboto, sans-serif !important;
+    text-align: right;
+   }
+  
+    ::ng-deep.mat-form-field-underline {
+        /*change color of underline*/
+        background-color: #f28d1e !important;
+        font-family: "Almarai", Roboto, sans-serif !important;
+        text-align: right;
+    }
+  
+  ::ng-deep.mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: #f28d1e !important;
+   font-family: "Almarai", Roboto, sans-serif !important;
+   text-align: right;
+  }
+
+button#search-button{
+    background-color: #f28d1e ; color: #0f1242; border-color: #f28d1e ; position: relative; top: 8px; left: 5px
+}
+ul li a{
+    font-family: "Almarai", Roboto, sans-serif !important;
+}

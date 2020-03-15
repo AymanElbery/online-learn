@@ -1,0 +1,16 @@
+.header{
+    padding: 10px;
+    border-bottom: solid 5px #EDEDED;
+}
+.header .primary-top{
+    padding: 5px;
+    text-align: left;
+}
+.title{
+    text-align: left;
+}
+.title h2{
+    position: relative;
+    top: 80px;
+    font-family: fontbold;
+}

@@ -1,0 +1,90 @@
+
+
+<ul class="nav nav-tabs">
+  <li class="active"> <a [routerLink]="'/learn'"> <i class="fas fa-book-reader"></i> نظام إدارة التعلم </a> </li>
+  <li class=""> <a [routerLink]="'/metrics'"> <i class="fas fa-laptop-code"></i> الفصول الافتراضية  </a> </li>
+</ul>
+<div class="wrapper-s">
+    <!-- Sidebar Holder -->
+    <!-- <nav id="sidebar">
+        <ul class="list-unstyled components">
+            <li class="active"> <a [routerLink]="'/learn'"> <i class="fas fa-book-reader"></i> نظام إدارة التعلم </a> </li>
+            <li class=""> <a [routerLink]="'/metrics'"> <i class="fas fa-laptop-code"></i> الفصول الافتراضية  </a> </li>
+            <li class=""> <a href="https://www.seu.edu.sa/ar/blackboard-system/"> <i class="fas fa-home"></i> نظام البلاك بورد</a> </li>
+        </ul>
+
+    </nav> -->
+
+
+    <!-- Page Content Holder -->
+    <div id="content">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <select class="form-control select-univ" id="univ">
+                      <option value="all" selected>جميع الجامعات</option>
+                      <option *ngFor="let univ of univs" value="univ.ID">{{univ.UNIV_NAME}}</option>
+                    </select>
+                </div>
+                <span style="position: relative; top: 8px; left: 5px">التاريخ من</span>
+                <mat-form-field>
+                  <input class="startDate" matInput [matDatepicker]="startDate" [value]="startDate">
+                  <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                  <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+                <span style="margin-right: 10%; position: relative; top: 8px; left: 5px">التاريخ إلى</span>
+                <mat-form-field class="end-date">
+                  <input class="endDate" matInput [matDatepicker]="endDate" [value]="endDate">
+                  <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                  <mat-datepicker #endDate></mat-datepicker>
+                </mat-form-field>
+                <button style="font-weight: bold; background-color: #f28d1e ; color: #0f1242; border-color: #f28d1e ; position: relative; top: 8px; right: 5px;" id="search-button" class="btn btn-primary">بحث</button>
+            </div>
+            <div class="col-md-7">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">عدد الطلبة</h5>
+                      <h3 class="card-subtitle mb-2 text-center">{{ studentCount }}</h3>
+                    </div>
+                </div>
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">عدد الأساتذة</h5>
+                      <h3 class="card-subtitle mb-2 text-center">{{ stuffCount }}</h3>
+                    </div>
+                </div>
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">عدد المقررات الدراسية</h5>
+                      <h3 class="card-subtitle mb-2 text-center">{{ coursesCount }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 50px;" class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">اليوم</th>
+                        <th scope="col">عدد المستخدمين الذين سجلوا دخول</th>
+                        <th scope="col">عدد التقييمات المتاحة للطلبة على نظام بلاكبورد </th>
+                        <th scope="col">عدد لوحات النقاش المتاحة للطلبة على نظام بلاكبورد</th>
+                        <th scope="col">عدد الملفات المتاحة على نظام بلاكبورد والتي يتم استعراضها</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of list">
+                        <td>{{item.DAY_WEEK}}</td>
+                        <td>{{item.TOTAL_LOGIN}}</td>
+                        <td>{{item.ASSESSMENTS_COUNT}}</td>
+                        <td>{{item.DISCUSSIONS_COUNT}}</td>
+                        <td>{{item.DOC_COUNT}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+</div>
