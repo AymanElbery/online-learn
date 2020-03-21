@@ -16,6 +16,7 @@ import { MetricsComponent } from './components/metrics-component/metrics.compone
 import { HeaderComponent } from './components/header-component/header.component';
 import { FooterComponent } from './components/footer-component/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormatDate } from './pipes/date.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LearnComponent,
     HeaderComponent,
     FooterComponent,
-    MetricsComponent
+    MetricsComponent,
+    FormatDate
   ],
   imports: [
     BrowserModule,

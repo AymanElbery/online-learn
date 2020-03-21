@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Router } from "@angular/router";
 import { environment } from '../../environments/environment';
 
 
@@ -17,8 +16,7 @@ export class LearnService {
     });
 
     constructor(
-        private http: HttpClient,
-        private router: Router
+        private http: HttpClient
     ) {}
 
     getAllUnivs() {
@@ -27,8 +25,32 @@ export class LearnService {
         });
     }
 
+    getUnivsById(id) {
+        return this.http.get(this.URL + "blackboard/universitiesbyid/"+id, {
+            headers: this.headers
+        });
+    }
+
     getLearn() {
         return this.http.get(this.URL + "blackboard/learn", {
+            headers: this.headers
+        });
+    }
+
+    getLearnByUnivId(id) {
+        return this.http.get(this.URL + "blackboard/learnbyid/"+id, {
+            headers: this.headers
+        });
+    }
+
+    getDates() {
+        return this.http.get(this.URL + "blackboard/dates", {
+            headers: this.headers
+        });
+    }
+
+    getLearnByDate(date) {
+        return this.http.get(this.URL + "blackboard/learnbydate/"+date, {
             headers: this.headers
         });
     }

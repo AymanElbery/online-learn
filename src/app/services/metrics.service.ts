@@ -27,9 +27,28 @@ export class MetricService {
         });
     }
 
+    getUnivsById(id) {
+        return this.http.get(this.URL + "blackboard/universitiesbyid/"+id, {
+            headers: this.headers
+        });
+    }
+
     getMetrics() {
         return this.http.get(this.URL + "blackboard/metrics", {
             headers: this.headers
         });
     }
+
+    getMetricsByUnivId(id) {
+        return this.http.get(this.URL + "blackboard/metricsbyid/"+id, {
+            headers: this.headers
+        });
+    }
+
+    getMetricsByDate(date) {
+        return this.http.get(this.URL + "blackboard/metricsbydate/"+date, {
+            headers: this.headers
+        });
+    }
 }
+

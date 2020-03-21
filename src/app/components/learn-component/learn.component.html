@@ -1,76 +1,69 @@
 
 
-<ul class="nav nav-tabs">
-  <li class="active"> <a [routerLink]="'/learn'"> <i class="fas fa-book-reader"></i> نظام إدارة التعلم </a> </li>
-  <li class=""> <a [routerLink]="'/metrics'"> <i class="fas fa-laptop-code"></i> الفصول الافتراضية  </a> </li>
-</ul>
+
 <div class="wrapper-s">
-    <!-- Sidebar Holder -->
-    <!-- <nav id="sidebar">
-        <ul class="list-unstyled components">
-            <li class="active"> <a [routerLink]="'/learn'"> <i class="fas fa-book-reader"></i> نظام إدارة التعلم </a> </li>
-            <li class=""> <a [routerLink]="'/metrics'"> <i class="fas fa-laptop-code"></i> الفصول الافتراضية  </a> </li>
-            <li class=""> <a href="https://www.seu.edu.sa/ar/blackboard-system/"> <i class="fas fa-home"></i> نظام البلاك بورد</a> </li>
-        </ul>
-
-    </nav> -->
-
-
     <!-- Page Content Holder -->
     <div id="content">
         <div class="row">
+          <ul style="margin-bottom: 30px;" class="nav nav-tabs">
+            <li class="active"> <a [routerLink]="'/learn'"> <i class="fas fa-book-reader"></i> نظام إدارة التعلم </a> </li>
+            <!-- <li class=""> <a [routerLink]="'/metrics'"> <i class="fas fa-laptop-code"></i> الفصول الافتراضية  </a> </li> -->
+          </ul>
+        </div>
+        <div style="margin-bottom: 30px;" class="row">
             <div class="col-md-5">
-                <div class="form-group">
-                    <select class="form-control select-univ" id="univ">
+                <div class="form-group date">
+                    <select (change)='onOptionsSelected(mySelect.value)' #mySelect class="form-control select-univ" id="univSelect" [(ngModel)]="selectedUniv">
                       <option value="all" selected>جميع الجامعات</option>
-                      <option *ngFor="let univ of univs" value="univ.ID">{{univ.UNIV_NAME}}</option>
+                      <option *ngFor="let univ of univs" [value]="univ.ID">{{univ.UNIV_NAME}}</option>
                     </select>
                 </div>
-                <span style="position: relative; top: 8px; left: 5px">التاريخ من</span>
-                <mat-form-field>
-                  <input class="startDate" matInput [matDatepicker]="startDate" [value]="startDate">
-                  <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-                  <mat-datepicker #startDate></mat-datepicker>
-                </mat-form-field>
-                <span style="margin-right: 10%; position: relative; top: 8px; left: 5px">التاريخ إلى</span>
-                <mat-form-field class="end-date">
-                  <input class="endDate" matInput [matDatepicker]="endDate" [value]="endDate">
-                  <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-                  <mat-datepicker #endDate></mat-datepicker>
-                </mat-form-field>
-                <button style="font-weight: bold; background-color: #f28d1e ; color: #0f1242; border-color: #f28d1e ; position: relative; top: 8px; right: 5px;" id="search-button" class="btn btn-primary">بحث</button>
             </div>
-            <div class="col-md-7">
-                <div class="card" style="width: 25rem;">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">عدد الطلبة</h5>
-                      <h3 class="card-subtitle mb-2 text-center">{{ studentCount }}</h3>
-                    </div>
+            <div class="col-md-5">
+              <div class="form-group date">
+                <select (change)='onDateSelected(day.value)' #day class="form-control select-univ" id="dateSelect">
+                  <option *ngFor="let date of dates" [value]="date.DATE_OF_DAY">{{ date.DAY_WEEK }} الموافق {{ date.DATE_OF_DAY | formatDate }}</option>
+                </select>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="card" style="width: 100%">
+                <div class="card-body">
+                  <h5 class="card-title text-center">عدد الطلبة</h5>
+                  <h3 class="card-subtitle mb-2 text-center">{{ studentCount }}</h3>
                 </div>
-                <div class="card" style="width: 25rem;">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">عدد الأساتذة</h5>
-                      <h3 class="card-subtitle mb-2 text-center">{{ stuffCount }}</h3>
-                    </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="card" style="width: 100%">
+                <div class="card-body">
+                  <h5 class="card-title text-center">عدد الأساتذة</h5>
+                  <h3 class="card-subtitle mb-2 text-center">{{ stuffCount }}</h3>
                 </div>
-                <div class="card" style="width: 25rem;">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">عدد المقررات الدراسية</h5>
-                      <h3 class="card-subtitle mb-2 text-center">{{ coursesCount }}</h3>
-                    </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="card" style="width: 100%">
+                <div class="card-body">
+                  <h5 class="card-title text-center">عدد المقررات الدراسية</h5>
+                  <h3 class="card-subtitle mb-2 text-center">{{ coursesCount }}</h3>
                 </div>
+              </div>
             </div>
         </div>
-        <div style="margin-top: 50px;" class="row">
+        <div *ngIf="!allUnivs" style="margin-top: 50px;" class="row">
             <div class="col-md-12">
+              <div class="table-responsive">
                 <table class="table">
                     <thead class="thead-dark">
                       <tr>
                         <th scope="col">اليوم</th>
-                        <th scope="col">عدد المستخدمين الذين سجلوا دخول</th>
-                        <th scope="col">عدد التقييمات المتاحة للطلبة على نظام بلاكبورد </th>
-                        <th scope="col">عدد لوحات النقاش المتاحة للطلبة على نظام بلاكبورد</th>
-                        <th scope="col">عدد الملفات المتاحة على نظام بلاكبورد والتي يتم استعراضها</th>
+                        <th scope="col">مستخدمين سجلوا الدخول</th>
+                        <th scope="col">التقييمات المتاحة</th>
+                        <th scope="col">لوحات النقاش</th>
+                        <th scope="col">الملفات المتاحة</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -82,9 +75,110 @@
                         <td>{{item.DOC_COUNT}}</td>
                       </tr>
                     </tbody>
-                  </table>
+                </table>
+              </div>
             </div>
         </div>
+        <div style="margin-top: 30px;" *ngIf="allUnivs" class="row">
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/login-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{totalLogins}}</h3>
+                  <h2>مستخدمين سجلوا الدخول</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/rate-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{assesmentCount}}</h3>
+                  <h2>التقييمات المتاحة</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/discuss-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{discussCount}}</h3>
+                  <h2>لوحات النقاش</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/files-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{docsCount}}</h3>
+                  <h2>الملفات المتاحة</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/session-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{totalSessions}}</h3>
+                  <h2>إجمالي الجلسات</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/duration-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{ totalHours }} ساعة و {{ totalMinutes }} دقيقة </h3>
+                  <h2>المدة الإجمالية</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/attend-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{attend}}</h3>
+                  <h2>الحاضرين</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/unique-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{attendUnique}}</h3>
+                  <h2> الحاضرين الفريدين</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="our-team">
+              <div class="pic">
+                  <img src="assets/images/async-icon.png">
+              </div>
+                <div class="team-content">
+                  <h3 class="title">{{asyncSessions}}</h3>
+                  <h2>الجلسات المتزامنة</h2>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-
 </div>
